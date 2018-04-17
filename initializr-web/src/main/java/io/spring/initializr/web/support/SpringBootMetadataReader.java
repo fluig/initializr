@@ -20,12 +20,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.web.client.RestTemplate;
+
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import io.spring.initializr.metadata.DefaultMetadataElement;
 
-import org.springframework.web.client.RestTemplate;
+import io.spring.initializr.metadata.DefaultMetadataElement;
 
 /**
  * Reads metadata from the main spring.io website. This is a stateful service: create a
@@ -35,32 +35,44 @@ import org.springframework.web.client.RestTemplate;
  */
 public class SpringBootMetadataReader {
 
-	private final JsonNode content;
+    private final JsonNode content;
 
-	/**
-	 * Parse the content of the metadata at the specified url
-	 */
-	public SpringBootMetadataReader(ObjectMapper objectMapper,
-			RestTemplate restTemplate, String url) throws IOException {
-		this.content = objectMapper.readTree(
-				restTemplate.getForObject(url, String.class));
-	}
+    /**
+     * Parse the content of the metadata at the specified url
+     */
+    public SpringBootMetadataReader(ObjectMapper objectMapper,
+            RestTemplate restTemplate, String url) throws IOException {
+        this.content = objectMapper.readTree(
+                restTemplate.getForObject(url, String.class));
+    }
 
-	/**
-	 * Return the boot versions parsed by this instance.
-	 */
-	public List<DefaultMetadataElement> getBootVersions() {
-		ArrayNode array = (ArrayNode) content.get("projectReleases");
-		List<DefaultMetadataElement> list = new ArrayList<>();
-		for (JsonNode it : array) {
-			DefaultMetadataElement version = new DefaultMetadataElement();
-			version.setId(it.get("version").textValue());
-			String name = it.get("versionDisplayName").textValue();
-			version.setName(it.get("snapshot").booleanValue() ? name + " (SNAPSHOT)" : name);
-			version.setDefault(it.get("current").booleanValue());
-			list.add(version);
-		}
-		return list;
-	}
+    public List<DefaultMetadataElement> getBootVersions() {
+        List<DefaultMetadataElement> list = new ArrayList<>();
+        DefaultMetadataElement version = new DefaultMetadataElement();
+        version.setId("2.0.0.RELEASE");
+        String name = "2.0.0";
+        version.setName(name);
+        version.setDefault(true);
+        list.add(version);
 
+        return list;
+    }
+
+    /**
+     * Return the boot versions parsed by this instance.
+
+     public List<DefaultMetadataElement> getBootVersions() {
+     ArrayNode array = (ArrayNode) content.get("projectReleases");
+     List<DefaultMetadataElement> list = new ArrayList<>();
+     for (JsonNode it : array) {
+     DefaultMetadataElement version = new DefaultMetadataElement();
+     version.setId(it.get("version").textValue());
+     String name = it.get("versionDisplayName").textValue();
+     version.setName(it.get("snapshot").booleanValue() ? name + " (SNAPSHOT)" : name);
+     version.setDefault(it.get("current").booleanValue());
+     list.add(version);
+     }
+     return list;
+     }
+     */
 }
