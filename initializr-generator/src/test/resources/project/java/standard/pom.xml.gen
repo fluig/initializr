@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.fluig</groupId>
-	<artifactId>card</artifactId>
+	<artifactId>fluig-card</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>card-demo</name>
+	<name>card</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
@@ -31,8 +31,8 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
+            <groupId>com.fluig</groupId>
+            <artifactId>fluig-integration-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

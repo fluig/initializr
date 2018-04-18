@@ -178,7 +178,7 @@ public class PomAssert {
 
 	public PomAssert hasSpringBootStarterTomcat() {
 		return hasDependency(
-				Dependency.withId("tomcat", "provided").asSpringBootStarter("tomcat"));
+				Dependency.withId("undertow", "compile").asSpringBootStarter("undertow"));
 	}
 
 	public PomAssert hasSpringBootStarterTest() {

@@ -186,14 +186,6 @@ public class ProjectRequestTests {
 	}
 
 	@Test
-	public void resolveBuild() {
-		ProjectRequest request = initProjectRequest();
-		request.setType("gradle-project");
-		request.resolve(metadata);
-		assertEquals("gradle", request.getBuild());
-	}
-
-	@Test
 	public void resolveBuildNoTag() {
 		metadata = InitializrMetadataTestBuilder.withDefaults()
 				.addType("foo", false, "/foo.zip", null, null).build();
@@ -244,7 +236,7 @@ public class ProjectRequestTests {
 	public void packageNameInferredByGroupIdAndArtifactId() {
 		ProjectRequest request = initProjectRequest();
 		request.setGroupId("org.acme");
-		request.setArtifactId("foo");
+		request.setName("foo");
 		request.resolve(metadata);
 		assertThat(request.getPackageName()).isEqualTo("org.acme.foo");
 	}
@@ -253,7 +245,7 @@ public class ProjectRequestTests {
 	public void packageNameInferredByGroupIdAndCompositeArtifactId() {
 		ProjectRequest request = initProjectRequest();
 		request.setGroupId("org.acme");
-		request.setArtifactId("foo-bar");
+		request.setName("foo-bar");
 		request.resolve(metadata);
 		assertThat(request.getPackageName()).isEqualTo("org.acme.foobar");
 	}
@@ -264,7 +256,7 @@ public class ProjectRequestTests {
 		request.setGroupId(null);
 		request.setArtifactId("foo");
 		request.resolve(metadata);
-		assertThat(request.getPackageName()).isEqualTo("com.example.demo");
+		assertThat(request.getPackageName()).isEqualTo("com.fluig.card");
 	}
 
 	@Test
@@ -273,7 +265,7 @@ public class ProjectRequestTests {
 		request.setGroupId("org.acme");
 		request.setArtifactId(null);
 		request.resolve(metadata);
-		assertThat(request.getPackageName()).isEqualTo("com.example.demo");
+		assertThat(request.getPackageName()).isEqualTo("com.fluig.card");
 	}
 
 	@Test
@@ -306,9 +298,9 @@ public class ProjectRequestTests {
 	public void resolveAdditionalBoms() {
 		Dependency dependency = Dependency.withId("foo");
 		dependency.setBom("foo-bom");
-		BillOfMaterials bom = BillOfMaterials.create("com.example", "foo-bom", "1.0.0");
+		BillOfMaterials bom = BillOfMaterials.create("com.fluig", "foo-bom", "1.0.0");
 		bom.getAdditionalBoms().add("bar-bom");
-		BillOfMaterials additionalBom = BillOfMaterials.create("com.example", "bar-bom",
+		BillOfMaterials additionalBom = BillOfMaterials.create("com.fluig", "bar-bom",
 				"1.1.0");
 		metadata = InitializrMetadataTestBuilder.withDefaults()
 				.addBom("foo-bom", bom).addBom("bar-bom", additionalBom)
@@ -328,9 +320,9 @@ public class ProjectRequestTests {
 		dependency.setBom("foo-bom");
 		Dependency anotherDependency = Dependency.withId("bar");
 		anotherDependency.setBom("bar-bom");
-		BillOfMaterials bom = BillOfMaterials.create("com.example", "foo-bom", "1.0.0");
+		BillOfMaterials bom = BillOfMaterials.create("com.fluig", "foo-bom", "1.0.0");
 		bom.getAdditionalBoms().add("bar-bom");
-		BillOfMaterials additionalBom = BillOfMaterials.create("com.example", "bar-bom",
+		BillOfMaterials additionalBom = BillOfMaterials.create("com.fluig", "bar-bom",
 				"1.1.0");
 		metadata = InitializrMetadataTestBuilder.withDefaults()
 				.addBom("foo-bom", bom).addBom("bar-bom", additionalBom)
@@ -349,7 +341,7 @@ public class ProjectRequestTests {
 		Dependency dependency = Dependency.withId("foo");
 		dependency.setBom("foo-bom");
 		dependency.setRepository("foo-repo");
-		BillOfMaterials bom = BillOfMaterials.create("com.example", "foo-bom", "1.0.0");
+		BillOfMaterials bom = BillOfMaterials.create("com.fluig", "foo-bom", "1.0.0");
 		bom.getRepositories().add("bar-repo");
 		metadata = InitializrMetadataTestBuilder.withDefaults()
 				.addBom("foo-bom", bom)
@@ -375,7 +367,7 @@ public class ProjectRequestTests {
 		Dependency dependency = Dependency.withId("foo");
 		dependency.setBom("foo-bom");
 		dependency.setRepository("foo-repo");
-		BillOfMaterials bom = BillOfMaterials.create("com.example", "foo-bom", "1.0.0");
+		BillOfMaterials bom = BillOfMaterials.create("com.fluig", "foo-bom", "1.0.0");
 		bom.getRepositories().add("bar-repo");
 		Dependency anotherDependency = Dependency.withId("bar");
 		anotherDependency.setRepository("bar-repo");

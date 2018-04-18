@@ -148,7 +148,7 @@ public class BasicProjectRequest {
 			return packageName;
 		}
 		if (StringUtils.hasText(groupId) && StringUtils.hasText(artifactId)) {
-			return getGroupId() + "." + getArtifactId();
+			return getGroupId() + "." + getName();
 		}
 		return null;
 	}

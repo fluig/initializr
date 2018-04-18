@@ -267,13 +267,13 @@ initializr:
   packagings:
     - name: Jar
       id: jar
-      default: true
+      default: false
     - name: War
       id: war
       default: false
     - name: Both
       id: both
-      default: false
+      default: true
   javaVersions:
     - id: 1.8
       name: 8

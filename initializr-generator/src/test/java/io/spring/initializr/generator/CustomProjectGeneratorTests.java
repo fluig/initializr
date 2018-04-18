@@ -46,26 +46,17 @@ public class CustomProjectGeneratorTests extends AbstractProjectGeneratorTests {
 	public void generateCustomResource() {
 		ProjectRequest request = createProjectRequest();
 		request.setType("maven-project");
-		request.setGroupId("com.example.custom");
+		request.setGroupId("com.fluig.custom");
 		ProjectAssert project = generateProject(request);
 		project.sourceCodeAssert("custom.txt")
 				.equalsTo(new ClassPathResource("project/custom/custom.txt"));
 	}
 
 	@Test
-	public void generateCustomResourceDisabled() {
-		ProjectRequest request = createProjectRequest();
-		request.setType("gradle-build");
-		request.setGroupId("com.example.custom");
-		ProjectAssert project = generateProject(request);
-		project.hasNoFile("custom.txt");
-	}
-
-	@Test
 	public void projectGenerationEventFiredAfterCustomization() {
 		ProjectRequest request = createProjectRequest();
 		request.setType("maven-project");
-		request.setGroupId("com.example.custom");
+		request.setGroupId("com.fluig.custom");
 		generateProject(request);
 		verifyProjectSuccessfulEventFor(request);
 

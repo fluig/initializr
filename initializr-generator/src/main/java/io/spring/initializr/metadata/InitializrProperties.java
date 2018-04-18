@@ -103,7 +103,7 @@ public class InitializrProperties extends InitializrConfiguration {
 	 * Package name metadata.
 	 */
 	@JsonIgnore
-	private final SimpleElement packageName = new SimpleElement(null);
+	private final SimpleElement packageName = new SimpleElement(groupId.value + "." + name.value);
 
 	public List<DependencyGroup> getDependencies() {
 		return dependencies;

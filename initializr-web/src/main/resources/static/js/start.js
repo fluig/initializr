@@ -158,9 +158,11 @@ $(function () {
     };
     var generatePackageName = function() {
         var groupId = $("#groupId").val();
-        var artifactId = $("#artifactId").val();
-        var package = groupId.concat(".").concat(artifactId)
+        var nameId = $("#name").val();
+        var package = groupId.concat(".").concat(nameId)
             .replace(/-/g, '');
+        console.log(package);
+        console.log(nameId);
         $("#packageName").val(package);
     };
     refreshDependencies($("#bootVersion").val());

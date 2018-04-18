@@ -82,12 +82,6 @@ public abstract class AbstractProjectGeneratorTests {
 		return new PomAssert(content).validateProjectRequest(request);
 	}
 
-	protected GradleBuildAssert generateGradleBuild(ProjectRequest request) {
-		request.setType("gradle-build");
-		String content = new String(projectGenerator.generateGradleBuild(request));
-		return new GradleBuildAssert(content).validateProjectRequest(request);
-	}
-
 	protected ProjectAssert generateProject(ProjectRequest request) {
 		File dir = projectGenerator.generateProjectStructure(request);
 		return new ProjectAssert(dir);

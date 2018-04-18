@@ -25,7 +25,7 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
             </div>
         </div>
         <div class="container start-main">
-            <div class="row form-inline text-center">
+        <div class="row form-inline text-center hidden">
                 <div class="form-group project-choice">
                     <h2>
                         <span class="rwd-line">
@@ -61,7 +61,7 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
                 <div class="col-sm-12 col-md-6">
                     <h2>Project Metadata</h2>
 
-                    <p>Artifact coordinates</p>
+                    <!--p>Artifact coordinates</p-->
 
                     <div class="form-group groupid-form-group">
                         <label for="groupId" class="control-label">{{groupId.title}}</label>
@@ -74,25 +74,26 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
                                value="{{artifactId.content}}"
                                name="artifactId">
                     </div>
-                    <div class="form-group full hidden name-form-group">
+                    <div class="form-group name-form-group">
                         <label for="name" class="control-label">{{name.title}}</label>
                         <input tabindex="6" id="name" class="form-control" type="text" value="{{name.content}}"
                                name="name">
                     </div>
-                    <div class="form-group full hidden description-form-group">
+                    <div class="form-group description-form-group">
                         <label for="description" class="control-label">{{description.title}}</label>
                         <input tabindex="7" id="description" class="form-control" type="text"
                                value="{{description.content}}" name="description">
                     </div>
-                    <div class="form-group full hidden packagename-form-group">
+                    <div class="form-group packagename-form-group">
                         <label for="packageName" class="control-label">{{packageName.title}}</label>
                         <input tabindex="8" id="packageName" class="form-control" type="text"
                                value="{{packageName.content}}"
                                name="packageName">
                     </div>
-                    <div class="form-group full hidden packaging-form-group">
+
+                    <!--div class="form-group full hidden packaging-form-group">
                         <label for="packaging" class="control-label">{{packagings.title}}</label>
-                        <select tabindex="9" class="form-control" id="packaging" name="packaging">
+                        <select tabindex="9" class="form-control" id="packaging" name="packaging" disabled="true">
                             {{#packagings.content}}
                             <option value="{{id}}"{{#default}} selected{{/default}}>{{name}}</option>
                             {{/packagings.content}}
@@ -100,34 +101,17 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
                     </div>
                     <div class="form-group full hidden javaversion-form-group">
                         <label for="javaVersion" class="control-label">{{javaVersions.title}}</label>
-                        <select tabindex="10" class="form-control" name="javaVersion" id="javaVersion">
+                        <select tabindex="10" class="form-control" name="javaVersion" id="javaVersion"  disabled="true">
                             {{#javaVersions.content}}
                             <option value="{{id}}"{{#default}} selected{{/default}}>{{name}}</option>
                             {{/javaVersions.content}}
                         </select>
-                    </div>
+                    </div-->
+
+
                 </div>
                 <div class="col-sm-12 col-md-6">
                     <h2>Dependencies</h2>
-
-                    <p>Select type of project do you need</p>
-
-                    <!-- begin custom stuff
-                    <div class="form-group">
-                        <label for="archetype" class="control-label">Select a Starter Archetype</label>&nbsp;
-                        <select id="archetype" name="archetype">
-                            <option value="FULL_SERVICE">Full Project (jar, war and database)</option>
-                            <option value="CUSTOM">Full Project (jar, war, database)</option>
-                            <option value="APP_WEB_DATA">App Module (Web/Data)</option>
-                            <option value="LIBRARY">Library </option>
-                            <option value="NOTHING">---------</option>
-                            <option value="MICRO">Microservice</option>
-                            <option value="MICRO_DATABASE">Microservice (Database)</option>
-                            <option value="MICRO_KAFKA">Microservice (Kafka)</option>
-                            <option value="NOTHING">---------</option>
-
-                        </select>
-                    </div>-->
 
                     <div class="form-group">
                         <label for="autocomplete" class="control-label">Search for dependencies</label>
@@ -144,8 +128,12 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 
                 </div>
             </div>
+
             <div class="row hidden tosimpleversion">
                 <p>Too many options? <a href="#">Switch back to the simple version.</a></p>
+            </div>
+            <div class="row tofullversion">
+                <p>Don't know what to look for? Want more options? <a href="#">Switch to the full version.</a></p>
             </div>
             <div class="row">
                 <p class="text-center">
@@ -155,9 +143,7 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
                     </button>
                 </p>
             </div>
-            <div class="row tofullversion">
-                <p>Don't know what to look for? Want more options? <a href="#">Switch to the full version.</a></p>
-            </div>
+
             <div class="row">
                 <div id="dependencies" class="full hidden">
                     {{#dependencies.content}}

@@ -130,14 +130,17 @@ public class InitializrMetadataBuilder {
 	 * Apply defaults to capabilities that have no value.
 	 */
 	protected void applyDefaults(InitializrMetadata metadata) {
+		if (!StringUtils.hasText(metadata.getArtifactId().getContent())) {
+			metadata.getArtifactId().setContent("fluig-card");
+		}
 		if (!StringUtils.hasText(metadata.getName().getContent())) {
-			metadata.getName().setContent("demo");
+			metadata.getName().setContent("card");
 		}
 		if (!StringUtils.hasText(metadata.getDescription().getContent())) {
 			metadata.getDescription().setContent("Demo project for Spring Boot");
 		}
 		if (!StringUtils.hasText(metadata.getGroupId().getContent())) {
-			metadata.getGroupId().setContent("com.example");
+			metadata.getGroupId().setContent("com.fluig");
 		}
 		if (!StringUtils.hasText(metadata.getVersion().getContent())) {
 			metadata.getVersion().setContent("0.0.1-SNAPSHOT");

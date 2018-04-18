@@ -36,9 +36,9 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class ProjectAssert {
 
-	public static final String DEFAULT_PACKAGE_NAME = "com.example.demo";
+	public static final String DEFAULT_PACKAGE_NAME = "com.fluig.card";
 
-	public static final String DEFAULT_APPLICATION_NAME = "DemoApplication";
+	public static final String DEFAULT_APPLICATION_NAME = "CardApplication";
 
 	private final File dir;
 	private Boolean mavenProject;
@@ -133,8 +133,6 @@ public class ProjectAssert {
 
 	public ProjectAssert isMavenProject() {
 		hasFile("pom.xml").hasNoFile("build.gradle");
-		hasFile("mvnw", "mvnw.cmd", ".mvn/wrapper/maven-wrapper.properties",
-				".mvn/wrapper/maven-wrapper.jar");
 		mavenProject = true;
 		return this;
 	}

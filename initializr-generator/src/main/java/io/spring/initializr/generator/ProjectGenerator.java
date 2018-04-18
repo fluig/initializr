@@ -226,7 +226,7 @@ public class ProjectGenerator {
 		else {
 			String pom = new String(doGenerateMavenPom(model));
 			writeText(new File(dir, "pom.xml"), pom);
-			writeMavenWrapper(dir);
+//			writeMavenWrapper(dir);
 		}
 
 		generateGitIgnore(dir, request);
@@ -414,18 +414,6 @@ public class ProjectGenerator {
 		Map<String, String> maven = new LinkedHashMap<>();
 		model.put("buildPropertiesMaven", maven.entrySet());
 		request.getBuildProperties().getMaven().forEach((k, v) -> maven.put(k, v.get()));
-
-		// Add various versions
-		model.put("dependencyManagementPluginVersion", metadata.getConfiguration()
-				.getEnv().getGradle().getDependencyManagementPluginVersion());
-		model.put("kotlinVersion", metadata.getConfiguration().getEnv().getKotlin()
-				.resolveKotlinVersion(bootVersion));
-		if ("kotlin".equals(request.getLanguage())) {
-			model.put("kotlin", true);
-		}
-		if ("groovy".equals(request.getLanguage())) {
-			model.put("groovy", true);
-		}
 
 		model.put("isRelease", request.getBootVersion().contains("RELEASE"));
 		setupApplicationModel(request, model);

@@ -103,8 +103,8 @@
 		</dependency>
 		{{/providedDependencies}}
 		<dependency>
-			<groupId>com.fluig</groupId>
-			<artifactId>fluig-integration-test</artifactId>
+            <groupId>com.fluig</groupId>
+            <artifactId>fluig-integration-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 		{{#testDependencies}}
