@@ -44,9 +44,9 @@ public class ProjectRequestDocumentFactoryTests extends AbstractInitializrStatTe
 		ProjectRequestDocument document = factory.createDocument(event);
 		assertEquals(event.getTimestamp(), document.getGenerationTimestamp());
 		assertEquals(null, document.getRequestIp());
-		assertEquals("com.example", document.getGroupId());
-		assertEquals("demo", document.getArtifactId());
-		assertEquals("com.example.demo", document.getPackageName());
+		assertEquals("com.fluig", document.getGroupId());
+		assertEquals("fluig-card", document.getArtifactId());
+		assertEquals("com.fluig.card", document.getPackageName());
 		assertEquals("1.2.3.RELEASE", document.getBootVersion());
 		assertEquals("1.8", document.getJavaVersion());
 		assertEquals("java", document.getLanguage());

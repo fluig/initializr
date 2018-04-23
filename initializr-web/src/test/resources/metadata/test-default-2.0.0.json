@@ -169,11 +169,11 @@
   },
   "groupId": {
     "type": "text",
-    "default": "com.example"
+    "default": "com.fluig"
   },
   "artifactId": {
     "type": "text",
-    "default": "demo"
+    "default": "fluig-card"
   },
   "version": {
     "type": "text",
@@ -181,14 +181,14 @@
   },
   "name": {
     "type": "text",
-    "default": "demo"
+    "default": "card"
   },
   "description": {
     "type": "text",
-    "default": "Demo project for Spring Boot"
+    "default": "Demo project for fluig NextGen"
   },
   "packageName": {
     "type": "text",
-    "default": "com.example.demo"
+    "default": "com.fluig.card"
   }
 }

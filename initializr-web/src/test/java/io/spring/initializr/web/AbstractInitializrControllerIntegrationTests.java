@@ -38,11 +38,11 @@ import org.springframework.test.context.TestExecutionListeners.MergeMode;
 @TestExecutionListeners(mergeMode = MergeMode.MERGE_WITH_DEFAULTS,
 		listeners = MockMvcClientHttpRequestFactoryTestExecutionListener.class)
 @AutoConfigureMockMvc
-@AutoConfigureRestDocs(outputDir = "target/snippets", uriPort = 80, uriHost = "start.spring.io")
+@AutoConfigureRestDocs(outputDir = "target/snippets", uriPort = 8080, uriHost = "localhost")
 public abstract class AbstractInitializrControllerIntegrationTests
 		extends AbstractInitializrIntegrationTests {
 
-	protected String host = "start.spring.io";
+	protected String host = "localhost:8080";
 
 	@Autowired
 	private

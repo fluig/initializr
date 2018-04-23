@@ -46,10 +46,10 @@ public class LegacyStsControllerIntegrationTests
 	@Test
 	public void legacyStsHome() {
 		String body = htmlHome();
-		assertTrue("groupId not found", body.contains("com.example"));
-		assertTrue("artifactId not found", body.contains("demo"));
+		assertTrue("groupId not found", body.contains("com.fluig"));
+		assertTrue("artifactId not found", body.contains("card"));
 		assertTrue("custom description not found",
-				body.contains("Demo project for Spring Boot"));
+				body.contains("Demo project for fluig NextGen"));
 		assertTrue("Wrong body:\n" + body,
 				body.contains("<input type=\"radio\" name=\"language\" value=\"groovy\"/>"));
 		assertTrue("Wrong body:\n" + body,

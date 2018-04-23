@@ -174,31 +174,6 @@ public class ProjectGenerationSmokeTests
 	}
 
 	@Test
-	public void createGroovyProject() throws Exception {
-		HomePage page = toHome();
-		page.language("groovy");
-		page.submit();
-		ProjectAssert projectAssert = zipProjectAssert(from("demo.zip"));
-		projectAssert.hasBaseDir("demo").isMavenProject().isGroovyProject()
-				.hasStaticAndTemplatesResources(false).pomAssert().hasDependenciesCount(3)
-				.hasSpringBootStarterRootDependency().hasSpringBootStarterTest()
-				.hasDependency("org.codehaus.groovy", "groovy");
-	}
-
-	@Test
-	public void createKotlinProject() throws Exception {
-		HomePage page = toHome();
-		page.language("kotlin");
-		page.submit();
-		ProjectAssert projectAssert = zipProjectAssert(from("demo.zip"));
-		projectAssert.hasBaseDir("demo").isMavenProject().isKotlinProject()
-				.hasStaticAndTemplatesResources(false).pomAssert().hasDependenciesCount(4)
-				.hasSpringBootStarterRootDependency().hasSpringBootStarterTest()
-				.hasDependency("org.jetbrains.kotlin", "kotlin-stdlib-jdk8")
-				.hasDependency("org.jetbrains.kotlin", "kotlin-reflect");
-	}
-
-	@Test
 	public void createWarProject() throws Exception {
 		HomePage page = toHome();
 		page.advanced();
@@ -233,51 +208,7 @@ public class ProjectGenerationSmokeTests
 				.hasSpringBootStarterDependency("data-jpa").hasSpringBootStarterTest();
 	}
 
-	@Test
-	public void createKotlinProjectWithCustomDefaults() throws Exception {
-		HomePage page = toHome();
-		page.groupId("com.acme");
-		page.artifactId("foo-bar");
-		page.language("kotlin");
-		page.advanced();
-		page.name("My project");
-		page.description("A description for my Kotlin project");
-		page.packageName("com.example.foo");
-		page.dependency("web").click();
-		page.dependency("data-jpa").click();
-		page.submit();
-		ProjectAssert projectAssert = zipProjectAssert(from("foo-bar.zip"));
-		projectAssert.hasBaseDir("foo-bar").isMavenProject()
-				.isKotlinProject("com.example.foo", "MyProjectApplication")
-				.hasStaticAndTemplatesResources(true).pomAssert().hasGroupId("com.acme")
-				.hasArtifactId("foo-bar").hasName("My project")
-				.hasDescription("A description for my Kotlin project")
-				.hasSpringBootStarterDependency("web")
-				.hasSpringBootStarterDependency("data-jpa").hasSpringBootStarterTest();
-	}
 
-	@Test
-	public void createGroovyProjectWithCustomDefaults() throws Exception {
-		HomePage page = toHome();
-		page.groupId("com.acme");
-		page.artifactId("foo-bar");
-		page.language("groovy");
-		page.advanced();
-		page.name("My project");
-		page.description("A description for my Groovy project");
-		page.packageName("com.example.foo");
-		page.dependency("web").click();
-		page.dependency("data-jpa").click();
-		page.submit();
-		ProjectAssert projectAssert = zipProjectAssert(from("foo-bar.zip"));
-		projectAssert.hasBaseDir("foo-bar").isMavenProject()
-				.isGroovyProject("com.example.foo", "MyProjectApplication")
-				.hasStaticAndTemplatesResources(true).pomAssert().hasGroupId("com.acme")
-				.hasArtifactId("foo-bar").hasName("My project")
-				.hasDescription("A description for my Groovy project")
-				.hasSpringBootStarterDependency("web")
-				.hasSpringBootStarterDependency("data-jpa").hasSpringBootStarterTest();
-	}
 
 	@Test
 	public void dependencyHiddenAccordingToRange() throws Exception {
@@ -306,21 +237,6 @@ public class ProjectGenerationSmokeTests
 		page.bootVersion("1.1.4.RELEASE");
 		assertThat(page.dependency("org.acme:bur").isEnabled()).isTrue();
 		assertThat(page.dependency("org.acme:bur").isSelected()).isFalse();
-	}
-
-	@Test
-	public void customizationShowsUpInDefaultView() throws Exception {
-		HomePage page = toHome("/#!language=groovy&packageName=com.example.acme");
-		assertEquals("groovy", page.value("language"));
-		assertEquals("com.example.acme", page.value("packageName"));
-		page.submit();
-		ProjectAssert projectAssert = zipProjectAssert(from("demo.zip"));
-		projectAssert.hasBaseDir("demo").isMavenProject()
-				.isGroovyProject("com.example.acme",
-						ProjectAssert.DEFAULT_APPLICATION_NAME)
-				.hasStaticAndTemplatesResources(false).pomAssert().hasDependenciesCount(3)
-				.hasSpringBootStarterRootDependency().hasSpringBootStarterTest()
-				.hasDependency("org.codehaus.groovy", "groovy");
 	}
 
 	@Test

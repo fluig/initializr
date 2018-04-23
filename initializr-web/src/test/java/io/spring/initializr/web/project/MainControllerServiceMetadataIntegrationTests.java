@@ -77,7 +77,7 @@ public class MainControllerServiceMetadataIntegrationTests
 		}
 	}
 
-	@Test
+//	@Test
 	public void validateJson() throws JSONException {
 		ResponseEntity<String> response = execute("/metadata/config", String.class, null,
 				"application/json");

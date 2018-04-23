@@ -117,15 +117,6 @@ public class ProjectGenerationMetricsListenerTests {
 	}
 
 	@Test
-	public void explicitType() {
-		ProjectRequest request = initialize();
-		request.setType("gradle-build");
-		request.resolve(metadata);
-		fireProjectGeneratedEvent(request);
-		metricsAssert.hasValue(1, "initializr.type.gradle-build");
-	}
-
-	@Test
 	public void defaultPackaging() {
 		ProjectRequest request = initialize();
 		request.resolve(metadata);
@@ -168,24 +159,6 @@ public class ProjectGenerationMetricsListenerTests {
 	}
 
 	@Test
-	public void explicitGroovyLanguage() {
-		ProjectRequest request = initialize();
-		request.setLanguage("groovy");
-		request.resolve(metadata);
-		fireProjectGeneratedEvent(request);
-		metricsAssert.hasValue(1, "initializr.language.groovy");
-	}
-
-	@Test
-	public void explicitKotlinLanguage() {
-		ProjectRequest request = initialize();
-		request.setLanguage("kotlin");
-		request.resolve(metadata);
-		fireProjectGeneratedEvent(request);
-		metricsAssert.hasValue(1, "initializr.language.kotlin");
-	}
-
-	@Test
 	public void defaultBootVersion() {
 		ProjectRequest request = initialize();
 		request.resolve(metadata);
@@ -211,26 +184,6 @@ public class ProjectGenerationMetricsListenerTests {
 		metricsAssert.hasValue(1, "initializr.client_id.httpie");
 	}
 
-	@Test
-	public void collectAllMetrics() {
-		ProjectRequest request = initialize();
-		request.getStyle().addAll(Arrays.asList("web", "security"));
-		request.setType("gradle-project");
-		request.setPackaging("jar");
-		request.setJavaVersion("1.6");
-		request.setLanguage("groovy");
-		request.setBootVersion("1.0.2.RELEASE");
-		request.getParameters().put("user-agent", "SpringBootCli/1.3.0.RELEASE");
-
-		request.resolve(metadata);
-		fireProjectGeneratedEvent(request);
-		metricsAssert.hasValue(1, "initializr.requests",
-				"initializr.dependency.web", "initializr.dependency.security",
-				"initializr.type.gradle-project", "initializr.packaging.jar",
-				"initializr.java_version.1_6", "initializr.language.groovy",
-				"initializr.boot_version.1_0_2_RELEASE",
-				"initializr.client_id.spring").metricsCount(9);
-	}
 
 	@Test
 	public void incrementMetrics() {
