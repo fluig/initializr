@@ -160,7 +160,7 @@ $(function () {
         var groupId = $("#groupId").val();
         var nameId = $("#name").val();
         var package = groupId.concat(".").concat(nameId)
-            .replace(/-/g, '');
+            .replace(/-/g, '.');
         console.log(package);
         console.log(nameId);
         $("#packageName").val(package);

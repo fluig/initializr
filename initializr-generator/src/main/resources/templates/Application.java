@@ -1,4 +1,4 @@
-package {{packageName}};
+package {{groupId}};
 
 import org.springframework.boot.SpringApplication;
 {{applicationImports}}

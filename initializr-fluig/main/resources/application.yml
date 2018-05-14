@@ -175,28 +175,11 @@ initializr:
       content:
         - name: Web
           id: web
-          description: Full-stack web development with Tomcat and Spring MVC
+          description: Web app for deploy in fluig container
           weight: 100
           facets:
             - web
             - json
-          links:
-            - rel: guide
-              href: https://spring.io/guides/gs/rest-service/
-              description: Building a RESTful Web Service
-            - rel: reference
-              href: http://docs.spring.io/spring-boot/docs/{bootVersion}/reference/htmlsingle/#boot-features-developing-web-applications
-            - rel: guide
-              href: https://spring.io/guides/gs/serving-web-content/
-              description: Serving Web Content with Spring MVC
-            - rel: guide
-              href: https://spring.io/guides/tutorials/bookmarks/
-              description: Building REST services with Spring
-        - name: Fluig Web
-          id: fluig-web
-          description: Web development with Undertow
-          weight: 100
-          starter: false
           links:
             - rel: guide
               href: https://spring.io/guides/gs/rest-service/
@@ -267,13 +250,10 @@ initializr:
   packagings:
     - name: Jar
       id: jar
-      default: false
+      default: true
     - name: War
       id: war
       default: false
-    - name: Both
-      id: both
-      default: true
   javaVersions:
     - id: 1.8
       name: 8

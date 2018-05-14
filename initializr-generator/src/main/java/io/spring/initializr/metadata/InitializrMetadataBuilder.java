@@ -143,7 +143,7 @@ public class InitializrMetadataBuilder {
 			metadata.getGroupId().setContent("com.fluig");
 		}
 		if (!StringUtils.hasText(metadata.getVersion().getContent())) {
-			metadata.getVersion().setContent("0.0.1-SNAPSHOT");
+			metadata.getVersion().setContent("1.0.0-SNAPSHOT");
 		}
 	}
 

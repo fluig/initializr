@@ -1,0 +1,26 @@
+server.servlet.path=/{{name}}
+
+spring.datasource.name=FluigDS
+spring.datasource.username=root
+spring.datasource.password=root
+spring.datasource.url=jdbc:mysql://localhost:3306/demo?useSSL=false
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+
+ro.spring.datasource.name=FluigDSRO
+ro.spring.datasource.username=root
+ro.spring.datasource.password=root
+ro.spring.datasource.url=jdbc:mysql://localhost:3306/demo?useSSL=false
+ro.spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+
+logging.level.root=INFO
+
+#default=10
+spring.datasource.hikari.maximum-pool-size=10
+
+
+#Actuator (comment to disable)
+#management.endpoints.web.exposure.include=*
+#info.app.name=Demo - Spring Boot with actuator demo Application
+
+#jolokia
+#management.endpoint.jolokia.enabled=true

@@ -49,8 +49,8 @@ public class SpringBootMetadataReader {
     public List<DefaultMetadataElement> getBootVersions() {
         List<DefaultMetadataElement> list = new ArrayList<>();
         DefaultMetadataElement version = new DefaultMetadataElement();
-        version.setId("2.0.0.RELEASE");
-        String name = "2.0.0";
+        version.setId("2.0.1.RELEASE");
+        String name = "2.0.1";
         version.setName(name);
         version.setDefault(true);
         list.add(version);
