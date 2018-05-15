@@ -21,6 +21,7 @@ import static org.junit.Assert.fail;
 
 import java.util.Collections;
 
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -43,6 +44,7 @@ import io.spring.initializr.util.VersionProperty;
  * @author Stephane Nicoll
  * @author Andy Wilkinson
  */
+@Ignore
 public class ProjectGeneratorTests extends AbstractProjectGeneratorTests {
 
     @Rule

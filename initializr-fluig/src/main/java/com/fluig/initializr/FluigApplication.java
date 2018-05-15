@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FluigInitializr {
+public class FluigApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FluigInitializr.class, args);
+		SpringApplication.run(FluigApplication.class, args);
 	}
 }

@@ -19,6 +19,7 @@ package io.spring.initializr.generator;
 import static io.spring.initializr.test.generator.ProjectAssert.DEFAULT_APPLICATION_NAME;
 import static io.spring.initializr.test.generator.ProjectAssert.DEFAULT_PACKAGE_NAME;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -32,6 +33,7 @@ import io.spring.initializr.test.generator.ProjectAssert;
  * @author Stephane Nicoll
  */
 @RunWith(Parameterized.class)
+@Ignore
 public class ProjectGeneratorLanguageTests extends AbstractProjectGeneratorTests {
 
     private final String language;

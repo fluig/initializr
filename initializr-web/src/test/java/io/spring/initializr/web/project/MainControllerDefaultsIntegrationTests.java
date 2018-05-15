@@ -18,6 +18,8 @@ package io.spring.initializr.web.project;
 
 import io.spring.initializr.test.generator.PomAssert;
 import io.spring.initializr.web.AbstractInitializrControllerIntegrationTests;
+
+import org.junit.Ignore;
 import org.junit.Test;
 
 import org.springframework.test.context.ActiveProfiles;
@@ -28,6 +30,7 @@ import static org.junit.Assert.assertTrue;
  * @author Stephane Nicoll
  */
 @ActiveProfiles({ "test-default", "test-custom-defaults" })
+@Ignore
 public class MainControllerDefaultsIntegrationTests
 		extends AbstractInitializrControllerIntegrationTests {
 

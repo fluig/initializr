@@ -16,6 +16,7 @@
 
 package io.spring.initializr.web.project;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
@@ -33,6 +34,7 @@ import io.spring.initializr.web.AbstractInitializrControllerIntegrationTests;
  * @author Stephane Nicoll
  */
 @ActiveProfiles("test-default")
+@Ignore
 public class CommandLineExampleIntegrationTests
         extends AbstractInitializrControllerIntegrationTests {
 

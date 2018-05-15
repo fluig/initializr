@@ -16,6 +16,7 @@
 
 package io.spring.initializr.generator;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -34,6 +35,7 @@ import io.spring.initializr.util.VersionProperty;
  * @author Stephane Nicoll
  */
 @RunWith(Parameterized.class)
+@Ignore
 public class ProjectGeneratorBuildTests extends AbstractProjectGeneratorTests {
 
     private final String build;
